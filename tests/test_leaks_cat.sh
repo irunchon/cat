@@ -17,10 +17,10 @@ flags=(
 )
 
 test_files=(
-    "testfiles/testfiles_1.txt"
-    "testfiles/testfiles_2.txt"
-    "testfiles/testfiles_3.txt"
-    "testfiles/testfiles_1.txt testfiles/testfiles_2.txt testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_1.txt"
+    "tests/testfiles/testfiles_2.txt"
+    "tests/testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_1.txt testfiles/testfiles_2.txt testfiles/testfiles_3.txt"
 )
 
 for flag in "${flags[@]}"

@@ -19,20 +19,21 @@ flags=(
 )
 
 test_files=(
-    "testfiles/testfiles_1.txt"
-    "testfiles/testfiles_2.txt"
-    "testfiles/testfiles_3.txt"
-    "testfiles/testfiles_1.txt testfiles/testfiles_2.txt"
-    "testfiles/testfiles_1.txt testfiles/testfiles_3.txt"
-    "testfiles/testfiles_2.txt testfiles/testfiles_3.txt"
-    "testfiles/testfiles_1.txt testfiles/testfiles_2.txt testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_1.txt"
+    "tests/testfiles/testfiles_2.txt"
+    "tests/testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_1.txt tests/testfiles/testfiles_2.txt"
+    "tests/testfiles/testfiles_1.txt tests/testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_2.txt tests/testfiles/testfiles_3.txt"
+    "tests/testfiles/testfiles_1.txt tests/testfiles/testfiles_2.txt tests/testfiles/testfiles_3.txt"
 )
 
 for flag in "${flags[@]}"
 do
+  echo $(pwd)
   for test_file in "${test_files[@]}"
   do
-    ./s21_cat $flag $test_file > tmp_1.txt
+    ./build/s21_cat $flag $test_file > tmp_1.txt
     cat $flag $test_file > tmp_2.txt
     cmp_result="$(diff -s tmp_1.txt tmp_2.txt)"
     if [ "$cmp_result" == "Files tmp_1.txt and tmp_2.txt are identical" ]
@@ -57,7 +58,7 @@ do
     then
       for test_file in "${test_files[@]}"
       do
-        ./s21_cat $flag1 $flag2 $test_file > tmp_1.txt
+        ./build/s21_cat $flag1 $flag2 $test_file > tmp_1.txt
         cat $flag1 $flag2 $test_file > tmp_2.txt
         cmp_result="$(diff -s tmp_1.txt tmp_2.txt)"
         if [ "$cmp_result" == "Files tmp_1.txt and tmp_2.txt are identical" ]
